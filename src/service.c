@@ -56,7 +56,6 @@ struct _IndicatorA11yServicePrivate
     GSList *lUsers;
     gchar *sUser;
     guint nUserSubscription;
-    guint nMagnifierSubscription;
     gboolean bReadingAccountsService;
     GDBusConnection *pAccountsServiceConnection;
     GSettings *pSettings;
@@ -354,11 +353,6 @@ static void onDispose (GObject *pObject)
         g_dbus_connection_signal_unsubscribe (self->pPrivate->pConnection, self->pPrivate->nUserSubscription);
     }
 
-    if (self->pPrivate->nMagnifierSubscription)
-    {
-        g_dbus_connection_signal_unsubscribe (self->pPrivate->pConnection, self->pPrivate->nMagnifierSubscription);
-    }
-
     if (self->pPrivate->lUsers)
     {
         g_slist_free (self->pPrivate->lUsers);
@@ -482,11 +476,6 @@ static void onMagnifierExit (GPid nPid, gint nStatus, gpointer pData)
         GVariant *pValue = g_variant_new ("b", FALSE);
         setAccountsService (self, "magnifier", pValue);
     }
-}
-
-static void onMagnifierClosed (GDBusConnection *pConnection, const gchar *sSender, const gchar *sPath, const gchar *sInterface, const gchar *sSignal, GVariant *pParameters, gpointer pUserData)
-{
-    onMagnifierExit (0, 0, pUserData);
 }
 
 static void onMagnifierState (GSimpleAction *pAction, GVariant* pValue, gpointer pUserData)
@@ -1289,7 +1278,6 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
         }
 
         self->pPrivate->nUserSubscription = g_dbus_connection_signal_subscribe (self->pPrivate->pConnection, NULL, GREETER_BUS_NAME, "UserChanged", GREETER_BUS_PATH, NULL, G_DBUS_SIGNAL_FLAGS_NONE, onUserChanged, self, NULL);
-        self->pPrivate->nMagnifierSubscription = g_dbus_connection_signal_subscribe (self->pPrivate->pConnection, NULL, GREETER_BUS_NAME, "MagnifierClosed", GREETER_BUS_PATH, NULL, G_DBUS_SIGNAL_FLAGS_NONE, onMagnifierClosed, self, NULL);
         loadManager (self);
     }
 
