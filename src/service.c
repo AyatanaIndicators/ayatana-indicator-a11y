@@ -1425,6 +1425,7 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
         g_menu_item_set_attribute (pItem, "step", "d", 0.1);
         g_menu_item_set_attribute (pItem, "digits", "y", 1);
         g_menu_item_set_attribute (pItem, "marks", "b", TRUE);
+        g_menu_item_set_attribute (pItem, "close-on-change", "b", TRUE);
         g_menu_append_item (pSection, pItem);
         g_object_unref (pIconMin);
         g_object_unref (pIconMax);
