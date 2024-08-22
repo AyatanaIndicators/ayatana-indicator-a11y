@@ -147,7 +147,7 @@ static void onOnboardBus (GDBusConnection *pConnection, const gchar *sSender, co
     g_variant_unref (pValue);
 }
 
-static void getAccountsService (IndicatorA11yService *self, gint nUid)
+static void getAccountsService (IndicatorA11yService *self, gint nUid, gboolean bUpdateActions)
 {
     self->pPrivate->bReadingAccountsService = TRUE;
     gchar *sPath = g_strdup_printf ("/org/freedesktop/Accounts/User%i", nUid);
@@ -169,8 +169,43 @@ static void getAccountsService (IndicatorA11yService *self, gint nUid)
                 g_variant_unref (pValue);
                 GVariant *pChild1 = g_variant_get_child_value (pChild0, 0);
                 g_variant_unref (pChild0);
-                GAction *pAction = g_action_map_lookup_action (G_ACTION_MAP (self->pPrivate->pActionGroup), lProperties[nIndex]);
-                g_action_change_state (pAction, pChild1);
+
+                if (bUpdateActions)
+                {
+                    GAction *pAction = g_action_map_lookup_action (G_ACTION_MAP (self->pPrivate->pActionGroup), lProperties[nIndex]);
+                    g_action_change_state (pAction, pChild1);
+                }
+                else
+                {
+                    switch (nIndex)
+                    {
+                        case 0:
+                        {
+                            self->pPrivate->bOrcaActive = g_variant_get_boolean (pChild1);
+
+                            break;
+                        }
+                        case 1:
+                        {
+                            self->pPrivate->bOnboardActive = g_variant_get_boolean (pChild1);
+
+                            break;
+                        }
+                        case 2:
+                        {
+                            self->pPrivate->bHighContrast = g_variant_get_boolean (pChild1);
+
+                            break;
+                        }
+                        case 3:
+                        {
+                            self->pPrivate->bMagnifierActive = g_variant_get_boolean (pChild1);
+
+                            break;
+                        }
+                    }
+                }
+
                 g_variant_unref (pChild1);
             }
         }
@@ -209,7 +244,7 @@ static void onUserLoaded (IndicatorA11yService *self, ActUser *pUser)
         if (bSame)
         {
             gint nUid = act_user_get_uid (pUser);
-            getAccountsService (self, nUid);
+            getAccountsService (self, nUid, TRUE);
         }
     }
 }
@@ -493,62 +528,63 @@ static void onMagnifierState (GSimpleAction *pAction, GVariant* pValue, gpointer
 {
     IndicatorA11yService *self = INDICATOR_A11Y_SERVICE (pUserData);
 
-    if (self->pPrivate->sMagnifier)
+    if (!self->pPrivate->bGreeter && !self->pPrivate->sMagnifier)
     {
-        g_simple_action_set_state (pAction, pValue);
-        gboolean bActive = g_variant_get_boolean (pValue);
+        return;
+    }
 
-        if (bActive != self->pPrivate->bMagnifierActive)
+    g_simple_action_set_state (pAction, pValue);
+    gboolean bActive = g_variant_get_boolean (pValue);
+
+    if (bActive != self->pPrivate->bMagnifierActive)
+    {
+        GError *pError = NULL;
+
+        if (!self->pPrivate->bGreeter)
         {
-            GError *pError = NULL;
-
-            if (!self->pPrivate->bGreeter)
+            if (bActive)
             {
-                if (bActive)
+                gboolean bFound = ayatana_common_utils_have_program (self->pPrivate->sMagnifier);
+
+                if (!bFound)
                 {
-                    gboolean bFound = ayatana_common_utils_have_program (self->pPrivate->sMagnifier);
+                    gchar *sMessage = g_strdup_printf (_("The %s program is required for this action, but it was not found."), self->pPrivate->sMagnifier);
+                    ayatana_common_utils_zenity_warning ("dialog-warning", _("Warning"), sMessage);
+                    g_free (sMessage);
 
-                    if (!bFound)
-                    {
-                        gchar *sMessage = g_strdup_printf (_("The %s program is required for this action, but it was not found."), self->pPrivate->sMagnifier);
-                        ayatana_common_utils_zenity_warning ("dialog-warning", _("Warning"), sMessage);
-                        g_free (sMessage);
-
-                        return;
-                    }
-                    else
-                    {
-                        gchar *lParams[] = {self->pPrivate->sMagnifier, NULL};
-                        g_spawn_async (NULL, lParams, NULL, G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD, NULL, NULL, &self->pPrivate->nMagnifier, &pError);
-                        g_child_watch_add (self->pPrivate->nMagnifier, onMagnifierExit, self);
-                    }
+                    return;
                 }
-                else if (self->pPrivate->nMagnifier)
+                else
                 {
-                    kill (self->pPrivate->nMagnifier, SIGTERM);
+                    gchar *lParams[] = {self->pPrivate->sMagnifier, NULL};
+                    g_spawn_async (NULL, lParams, NULL, G_SPAWN_SEARCH_PATH | G_SPAWN_DO_NOT_REAP_CHILD, NULL, NULL, &self->pPrivate->nMagnifier, &pError);
+                    g_child_watch_add (self->pPrivate->nMagnifier, onMagnifierExit, self);
                 }
             }
-            else
+            else if (self->pPrivate->nMagnifier)
             {
-                GVariant *pParam = g_variant_new ("(b)", bActive);
-                g_dbus_connection_call_sync (self->pPrivate->pConnection, GREETER_BUS_NAME, GREETER_BUS_PATH, GREETER_BUS_NAME, "ToggleMagnifier", pParam, NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, &pError);
+                kill (self->pPrivate->nMagnifier, SIGTERM);
             }
+        }
+        else
+        {
+            GVariant *pParam = g_variant_new ("(b)", bActive);
+            g_dbus_connection_call_sync (self->pPrivate->pConnection, GREETER_BUS_NAME, GREETER_BUS_PATH, GREETER_BUS_NAME, "ToggleMagnifier", pParam, NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, &pError);
+        }
 
-            if (pError)
-            {
-                g_warning ("Panic: Failed to toggle magnifier: %s", pError->message);
-                g_error_free (pError);
+        if (pError)
+        {
+            g_warning ("Panic: Failed to toggle magnifier: %s", pError->message);
+            g_error_free (pError);
 
-                return;
-            }
+            return;
+        }
 
-            self->pPrivate->bMagnifierActive = bActive;
+        self->pPrivate->bMagnifierActive = bActive;
 
-            if (!self->pPrivate->bReadingAccountsService)
-            {
-                GVariant *pValue = g_variant_new ("b", bActive);
-                setAccountsService (self, "magnifier", pValue);
-            }
+        if (!self->pPrivate->bReadingAccountsService)
+        {
+            setAccountsService (self, "magnifier", pValue);
         }
     }
 }
@@ -736,34 +772,72 @@ static void onScaleState (gpointer pUserData)
 static void onOrcaState (GSimpleAction *pAction, GVariant* pValue, gpointer pUserData)
 {
     g_simple_action_set_state (pAction, pValue);
-
     IndicatorA11yService *self = INDICATOR_A11Y_SERVICE (pUserData);
 
     if (self->pPrivate->bGreeter)
     {
-        gboolean bActive = g_variant_get_boolean (pValue);
+        self->pPrivate->bOrcaActive = g_variant_get_boolean (pValue);
+        GError *pError = NULL;
+        GVariant *pParam = g_variant_new ("(b)", self->pPrivate->bOrcaActive);
+        g_dbus_connection_call_sync (self->pPrivate->pConnection, GREETER_BUS_NAME, GREETER_BUS_PATH, GREETER_BUS_NAME, "ToggleOrca", pParam, NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, &pError);
 
-        if (bActive != self->pPrivate->bOrcaActive)
+        if (pError)
         {
-            GError *pError = NULL;
-            GVariant *pParam = g_variant_new ("(b)", bActive);
-            g_dbus_connection_call_sync (self->pPrivate->pConnection, GREETER_BUS_NAME, GREETER_BUS_PATH, GREETER_BUS_NAME, "ToggleOrca", pParam, NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, &pError);
+            g_warning ("Panic: Failed to toggle Orca: %s", pError->message);
+            g_error_free (pError);
 
-            if (pError)
-            {
-                g_warning ("Panic: Failed to toggle Orca: %s", pError->message);
-                g_error_free (pError);
+            return;
+        }
 
-                return;
-            }
+        if (!self->pPrivate->bReadingAccountsService)
+        {
+            setAccountsService (self, "orca", pValue);
+        }
+    }
+}
 
-            self->pPrivate->bOrcaActive = bActive;
+static void setLastTheme (gchar *sKey, gboolean bFallback, gboolean bSet, IndicatorA11yService *self)
+{
+    gchar **pProperty = NULL;
+    gboolean bGtkTheme = g_str_equal (sKey, "gtk-theme");
 
-            if (!self->pPrivate->bReadingAccountsService)
-            {
-                GVariant *pValue = g_variant_new ("b", bActive);
-                setAccountsService (self, "orca", pValue);
-            }
+    if (bGtkTheme)
+    {
+        pProperty = &self->pPrivate->sThemeGtk;
+    }
+    else
+    {
+        pProperty = &self->pPrivate->sThemeIcon;
+    }
+
+    gchar *sValue = g_settings_get_string (self->pPrivate->pHighContrastSettings, sKey);
+    gboolean bContrastHigh = g_str_equal (sValue, "ContrastHigh");
+    gboolean bHighContrastInverse = g_str_equal (sValue, "HighContrastInverse");
+
+    if (!bContrastHigh && !bHighContrastInverse)
+    {
+        if (*pProperty)
+        {
+            g_free (*pProperty);
+        }
+
+        *pProperty = sValue;
+
+        if (bSet)
+        {
+            g_settings_set_string (self->pPrivate->pSettings, sKey, *pProperty);
+        }
+    }
+    else
+    {
+        g_free (sValue);
+
+        if (bFallback)
+        {
+            GVariant *pValue = g_settings_get_default_value (self->pPrivate->pHighContrastSettings, sKey);
+            const gchar *sConstValue = g_variant_get_string (pValue, NULL);
+            *pProperty = g_strdup (sConstValue);
+            g_variant_unref (pValue);
         }
     }
 }
@@ -772,83 +846,77 @@ static void onContrastState (GSimpleAction *pAction, GVariant* pValue, gpointer 
 {
     IndicatorA11yService *self = INDICATOR_A11Y_SERVICE (pUserData);
 
-    if (self->pPrivate->pHighContrastSettings && self->pPrivate->pBackgroundSettings && self->pPrivate->pSettings && self->pPrivate->sHighContrast && self->pPrivate->sThemeIcon && self->pPrivate->sThemeGtk)
+    if (!self->pPrivate->bGreeter && (!self->pPrivate->pHighContrastSettings || !self->pPrivate->pBackgroundSettings || !self->pPrivate->pSettings || !self->pPrivate->sHighContrast || !self->pPrivate->sThemeIcon || !self->pPrivate->sThemeGtk))
     {
-        g_simple_action_set_state (pAction, pValue);
-        gboolean bActive = g_variant_get_boolean (pValue);
+        return;
+    }
 
-        if (bActive != self->pPrivate->bHighContrast)
+    g_simple_action_set_state (pAction, pValue);
+    self->pPrivate->bHighContrast = g_variant_get_boolean (pValue);
+
+    if (!self->pPrivate->bGreeter)
+    {
+        self->pPrivate->bIgnoreSettings = TRUE;
+
+        if (self->pPrivate->bHighContrast)
         {
-            self->pPrivate->bHighContrast = bActive;
+            setLastTheme ("gtk-theme", FALSE, TRUE, self);
+            setLastTheme ("icon-theme", FALSE, TRUE, self);
 
-            if (!self->pPrivate->bGreeter)
+            g_settings_set_string (self->pPrivate->pSettings, "icon-theme", self->pPrivate->sThemeIcon);
+            g_settings_set_string (self->pPrivate->pHighContrastSettings, "gtk-theme", self->pPrivate->sHighContrast);
+            g_settings_set_string (self->pPrivate->pHighContrastSettings, "icon-theme", "ContrastHigh");
+
+            g_settings_set_string (self->pPrivate->pBackgroundSettings, "color-shading-type", "solid");
+            g_settings_set_string (self->pPrivate->pBackgroundSettings, "picture-filename", "");
+            g_settings_set_string (self->pPrivate->pBackgroundSettings, "picture-options", "wallpaper");
+
+            gboolean bInverse = g_str_equal (self->pPrivate->sHighContrast, "HighContrastInverse");
+
+            if (bInverse)
             {
-                self->pPrivate->bIgnoreSettings = TRUE;
-
-                if (bActive)
-                {
-                    g_free (self->pPrivate->sThemeGtk);
-                    g_free (self->pPrivate->sThemeIcon);
-                    self->pPrivate->sThemeGtk = g_settings_get_string (self->pPrivate->pHighContrastSettings, "gtk-theme");
-                    self->pPrivate->sThemeIcon = g_settings_get_string (self->pPrivate->pHighContrastSettings, "icon-theme");
-                    g_settings_set_string (self->pPrivate->pHighContrastSettings, "gtk-theme", self->pPrivate->sHighContrast);
-                    g_settings_set_string (self->pPrivate->pHighContrastSettings, "icon-theme", "ContrastHigh");
-                    g_settings_set_string (self->pPrivate->pSettings, "gtk-theme", self->pPrivate->sThemeGtk);
-                    g_settings_set_string (self->pPrivate->pSettings, "icon-theme", self->pPrivate->sThemeIcon);
-
-                    g_settings_set_string (self->pPrivate->pBackgroundSettings, "color-shading-type", "solid");
-                    g_settings_set_string (self->pPrivate->pBackgroundSettings, "picture-filename", "");
-                    g_settings_set_string (self->pPrivate->pBackgroundSettings, "picture-options", "wallpaper");
-
-                    gboolean bInverse = g_str_equal (self->pPrivate->sHighContrast, "HighContrastInverse");
-
-                    if (bInverse)
-                    {
-                        g_settings_set_string (self->pPrivate->pBackgroundSettings, "primary-color", "rgb(0,0,0)");
-                    }
-                    else
-                    {
-                        g_settings_set_string (self->pPrivate->pBackgroundSettings, "primary-color", "rgb(255,255,255)");
-                    }
-                }
-                else
-                {
-                    g_settings_set_string (self->pPrivate->pHighContrastSettings, "gtk-theme", self->pPrivate->sThemeGtk);
-                    g_settings_set_string (self->pPrivate->pHighContrastSettings, "icon-theme", self->pPrivate->sThemeIcon);
-
-                    const gchar *lProperties[] = {"color-shading-type", "picture-filename", "picture-options", "primary-color"};
-
-                    for (guint nProperty = 0; nProperty < 4; nProperty++)
-                    {
-                        gchar *sValue = g_settings_get_string (self->pPrivate->pSettings, lProperties[nProperty]);
-                        g_settings_set_string (self->pPrivate->pBackgroundSettings, lProperties[nProperty], sValue);
-                        g_free (sValue);
-                    }
-                }
-
-                self->pPrivate->bIgnoreSettings = FALSE;
+                g_settings_set_string (self->pPrivate->pBackgroundSettings, "primary-color", "rgb(0,0,0)");
             }
             else
             {
-                GError *pError = NULL;
-                GVariant *pParam = g_variant_new ("(b)", bActive);
-                g_dbus_connection_call_sync (self->pPrivate->pConnection, GREETER_BUS_NAME, GREETER_BUS_PATH, GREETER_BUS_NAME, "ToggleHighContrast", pParam, NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, &pError);
-
-                if (pError)
-                {
-                    g_warning ("Panic: Failed to toggle high contrast: %s", pError->message);
-                    g_error_free (pError);
-
-                    return;
-                }
-            }
-
-            if (!self->pPrivate->bReadingAccountsService)
-            {
-                GVariant *pValue = g_variant_new ("b", bActive);
-                setAccountsService (self, "contrast", pValue);
+                g_settings_set_string (self->pPrivate->pBackgroundSettings, "primary-color", "rgb(255,255,255)");
             }
         }
+        else
+        {
+            g_settings_set_string (self->pPrivate->pHighContrastSettings, "gtk-theme", self->pPrivate->sThemeGtk);
+            g_settings_set_string (self->pPrivate->pHighContrastSettings, "icon-theme", self->pPrivate->sThemeIcon);
+
+            const gchar *lProperties[] = {"color-shading-type", "picture-filename", "picture-options", "primary-color"};
+
+            for (guint nProperty = 0; nProperty < 4; nProperty++)
+            {
+                gchar *sValue = g_settings_get_string (self->pPrivate->pSettings, lProperties[nProperty]);
+                g_settings_set_string (self->pPrivate->pBackgroundSettings, lProperties[nProperty], sValue);
+                g_free (sValue);
+            }
+        }
+
+        self->pPrivate->bIgnoreSettings = FALSE;
+    }
+    else
+    {
+        GError *pError = NULL;
+        GVariant *pParam = g_variant_new ("(b)", self->pPrivate->bHighContrast);
+        g_dbus_connection_call_sync (self->pPrivate->pConnection, GREETER_BUS_NAME, GREETER_BUS_PATH, GREETER_BUS_NAME, "ToggleHighContrast", pParam, NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, &pError);
+
+        if (pError)
+        {
+            g_warning ("Panic: Failed to toggle high contrast: %s", pError->message);
+            g_error_free (pError);
+
+            return;
+        }
+    }
+
+    if (!self->pPrivate->bReadingAccountsService)
+    {
+        setAccountsService (self, "contrast", pValue);
     }
 }
 
@@ -856,9 +924,18 @@ static void onBackgroundSettings (GSettings *pSettings, const gchar *sKey, gpoin
 {
     IndicatorA11yService *self = INDICATOR_A11Y_SERVICE (pUserData);
 
-    if (self->pPrivate->pBackgroundSettings && self->pPrivate->pSettings)
+    if (self->pPrivate->pBackgroundSettings && self->pPrivate->pSettings && self->pPrivate->pHighContrastSettings)
     {
-        if (!self->pPrivate->bHighContrast)
+        gchar *sGtkTheme = g_settings_get_string (self->pPrivate->pHighContrastSettings, "gtk-theme");
+        gchar *sIconTheme = g_settings_get_string (self->pPrivate->pHighContrastSettings, "icon-theme");
+        gchar *sHighContrast = g_settings_get_string (self->pPrivate->pSettings, "high-contrast");
+        gboolean bHighContrastGtk = g_str_equal (sGtkTheme, sHighContrast);
+        g_free (sHighContrast);
+        gboolean bHighContrastIcon = g_str_equal (sIconTheme, "ContrastHigh");
+        g_free (sGtkTheme);
+        g_free (sIconTheme);
+
+        if (!bHighContrastGtk && !bHighContrastIcon)
         {
             gchar *sValue = g_settings_get_string (self->pPrivate->pBackgroundSettings, sKey);
             g_settings_set_string (self->pPrivate->pSettings, sKey, sValue);
@@ -916,26 +993,11 @@ static void onContrastSettings (GSettings *pSettings, const gchar *sKey, gpointe
 
         if (bThemeGtk)
         {
-            g_free (self->pPrivate->sThemeGtk);
-            self->pPrivate->sThemeGtk = g_settings_get_string (self->pPrivate->pHighContrastSettings, "gtk-theme");
-            g_settings_set_string (self->pPrivate->pSettings, "gtk-theme", self->pPrivate->sThemeGtk);
+            setLastTheme ("gtk-theme", FALSE, TRUE, self);
         }
         else if (bThemeIcon)
         {
-            g_free (self->pPrivate->sThemeIcon);
-            self->pPrivate->sThemeIcon = g_settings_get_string (self->pPrivate->pHighContrastSettings, "icon-theme");
-            g_settings_set_string (self->pPrivate->pSettings, "icon-theme", self->pPrivate->sThemeIcon);
-        }
-
-        bThemeGtk = g_str_equal (self->pPrivate->sThemeGtk, "ContrastHigh") || g_str_equal (self->pPrivate->sThemeGtk, "HighContrastInverse");
-        bThemeIcon = g_str_equal (self->pPrivate->sThemeIcon, "ContrastHigh");
-        gboolean bHighContrast = (bThemeGtk && bThemeIcon);
-
-        if (self->pPrivate->bHighContrast != bHighContrast)
-        {
-            GAction *pAction = g_action_map_lookup_action (G_ACTION_MAP (self->pPrivate->pActionGroup), "contrast");
-            GVariant *pValue = g_variant_new_boolean (bHighContrast);
-            g_action_change_state (pAction, pValue);
+            setLastTheme ("icon-theme", FALSE, TRUE, self);
         }
     }
 }
@@ -996,6 +1058,7 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
     self->pPrivate->bOnboardActive = FALSE;
     self->pPrivate->bOrcaActive = FALSE;
     self->pPrivate->bMagnifierActive = FALSE;
+    self->pPrivate->bHighContrast = FALSE;
     self->pPrivate->fScale = 0;
     self->pPrivate->sMagnifier = NULL;
     self->pPrivate->nMagnifier = 0;
@@ -1180,21 +1243,18 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
 
                     if (!nLength)
                     {
-                        self->pPrivate->sThemeGtk = g_settings_get_string (self->pPrivate->pHighContrastSettings, "gtk-theme");
+                        setLastTheme ("gtk-theme", TRUE, FALSE, self);
                     }
 
-                    self->pPrivate->sThemeIcon = g_settings_get_string (self->pPrivate->pHighContrastSettings, "icon-theme");
+                    self->pPrivate->sThemeIcon = g_settings_get_string (self->pPrivate->pSettings, "icon-theme");
                     nLength = g_utf8_strlen (self->pPrivate->sThemeIcon, -1);
 
                     if (!nLength)
                     {
-                        self->pPrivate->sThemeIcon = g_settings_get_string (self->pPrivate->pHighContrastSettings, "icon-theme");
+                        setLastTheme ("icon-theme", TRUE, FALSE, self);
                     }
 
                     self->pPrivate->sHighContrast = g_settings_get_string (self->pPrivate->pSettings, "high-contrast");
-                    gboolean bThemeGtk = g_str_equal (self->pPrivate->sThemeGtk, self->pPrivate->sHighContrast);
-                    gboolean bThemeIcon = g_str_equal (self->pPrivate->sThemeIcon, "ContrastHigh");
-                    self->pPrivate->bHighContrast = (bThemeGtk && bThemeIcon);
                     self->pPrivate->sMagnifier = g_settings_get_string (self->pPrivate->pSettings, "magnifier");
                 }
                 else
@@ -1263,6 +1323,8 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
         }
 
         self->pPrivate->nOnboardSubscription = g_dbus_connection_signal_subscribe (self->pPrivate->pConnection, NULL, "org.freedesktop.DBus.Properties", "PropertiesChanged", "/org/onboard/Onboard/Keyboard", "org.onboard.Onboard.Keyboard", G_DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE, onOnboardBus, self, NULL);
+        gint nUid = geteuid ();
+        getAccountsService (self, nUid, FALSE);
     }
     else
     {
@@ -1473,9 +1535,9 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
 
     self->pPrivate->nOwnId = g_bus_own_name (G_BUS_TYPE_SESSION, BUS_NAME, G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT, onBusAcquired, NULL, onNameLost, self, NULL);
 
-    if (!self->pPrivate->bGreeter && !self->pPrivate->bScalingUnsupported)
+    if (!self->pPrivate->bGreeter)
     {
-        if (self->pPrivate->pSettings)
+        if (self->pPrivate->pSettings && !self->pPrivate->bScalingUnsupported)
         {
             GAction *pAction = g_action_map_lookup_action (G_ACTION_MAP (self->pPrivate->pActionGroup), "scale");
             GVariant *pScale = g_settings_get_value (self->pPrivate->pSettings, "scale");
@@ -1483,7 +1545,7 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
         }
 
         gint nUid = geteuid ();
-        getAccountsService (self, nUid);
+        getAccountsService (self, nUid, TRUE);
     }
 }
 
