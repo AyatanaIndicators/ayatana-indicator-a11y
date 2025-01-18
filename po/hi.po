@@ -8,47 +8,50 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2023-04-10 23:13+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-01-19 18:00+0000\n"
+"Last-Translator: weshall <anonymousnew88@proton.me>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/ayatana-indicators/"
+"a11y-applet/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: src/service.c:77
 msgid "Accessibility"
-msgstr ""
+msgstr "सुलभता"
 
 #: src/service.c:78 src/service.c:87
 msgid "Accessibility settings"
-msgstr ""
+msgstr "सुलभता स्थापित"
 
 #: src/service.c:502
 #, c-format
 msgid "The %s program is required for this action, but it was not found."
-msgstr ""
+msgstr "इस क्रिया के लिए %s प्रोग्राम आवश्यक है, लेकिन यह नहीं मिला।"
 
 #: src/service.c:503
 msgid "Warning"
-msgstr ""
+msgstr "चेतावनी"
 
 #: src/service.c:1111
 msgid "User Interface Scale"
-msgstr ""
+msgstr "उपभोक्ता अंतरफलक पैमाना"
 
 #: src/service.c:1128
 msgid "High Contrast"
-msgstr ""
+msgstr "उच्च कंट्रास्ट"
 
 #: src/service.c:1133
 msgid "On-Screen Keyboard"
-msgstr ""
+msgstr "ऑन स्क्रीन कीबोर्ड ( सामने दिखाई देने वाला फलक )"
 
 #: src/service.c:1138
 msgid "Screen Reader"
-msgstr ""
+msgstr "डिस्प्ले वाचक"
 
 #: src/service.c:1143
 msgid "Screen Magnifier"
-msgstr ""
+msgstr "डिस्प्ले आवर्धक"
