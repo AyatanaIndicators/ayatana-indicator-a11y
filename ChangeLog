@@ -1,6 +1,179 @@
+2025-03-12 Mike Gabriel
+
+        * release 24.4.2 (HEAD -> main, tag: 24.4.2)
+        * Merge branch 'tari01-pr/drop-magnifier-close' (060fb350)
+
+2024-08-01 Robert Tari
+
+        * src/service.c: Drop MagnifierClosed signal handler: Since we have
+          undecorated the magnifier window, Arctica Greeter no
+          longer sends the MagnifierClosed signal, so this code is
+          now orphaned. (ae8c17ee)
+
+2025-02-17 Temuri Doghonadze
+
+        * Translated using Weblate (Georgian) (f59066df)
+
+2025-01-18 weshall
+
+        * Translated using Weblate (Hindi) (73127af0)
+
+2024-12-27 dex girl
+
+        * Translated using Weblate (English (Canada)) (eb14e3c6)
+
+2024-11-13 Cleverson Cândido
+
+        * Translated using Weblate (Portuguese) (f6a7f063)
+
+2024-11-11 Yaron Shahrabani
+
+        * Translated using Weblate (Hebrew) (61c3bb19)
+
+2024-11-08 தமிழ்நேரம்
+
+        * Translated using Weblate (Tamil) (4ba743c9)
+
+2024-10-29 Serhii Horichenko
+
+        * Translated using Weblate (Ukrainian) (c760ae0b)
+        * Translated using Weblate (Russian) (3a037c98)
+
+2024-09-27 Remus-Gabriel Chelu
+
+        * Translated using Weblate (Romanian) (a5c12569)
+
+2024-09-02 Moo
+
+        * Translated using Weblate (Lithuanian) (8417838d)
+
+2024-08-22 Mike Gabriel
+
+        * Merge branch 'tari01-pr/no-high-contrast-last-theme' (bc75a16d)
+
+2024-08-10 Robert Tari
+
+        * src/service.c: Do not save high contrast themes as last used theme
+          (ad6af1a8)
+
+2024-08-22 Mike Gabriel
+
+        * Merge branch 'tari01-pr/value-change-close' (57327e84)
+
+2024-08-13 umesaburo sagawa
+
+        * Translated using Weblate (Japanese) (ba5ce241)
+
+2024-08-04 Steve
+
+        * Translated using Weblate (French) (db1db5f6)
+
+2024-07-16 Quentin PAGÈS
+
+        * Translated using Weblate (Occitan) (42133560)
+
+2024-08-13 umesaburo sagawa
+
+        * Translated using Weblate (Japanese) (e862873b)
+
+2024-08-04 Steve
+
+        * Translated using Weblate (French) (e80737e3)
+
+2024-07-16 Quentin PAGÈS
+
+        * Translated using Weblate (Occitan) (675cbf9d)
+
+2024-07-17 Robert Tari
+
+        * src/service.c: Close the menu when the scaling changes (2cef0aca)
+
+2024-07-16 Mike Gabriel
+
+        * Merge branch 'tari01-pr/panic-warning' (248b52e9)
+
+2024-07-16 Robert Tari
+
+        * src/service.c: Disable scaling for Wayland (914e1cf4)
+        * src/service.c: If possible, replace errors with more descriptive
+          warnings when facing a panic (2db92c1d)
+
+2024-07-15 Mike Gabriel
+
+        * Merge branch 'tari01-pr/scale-virtual-env' (15c1c637)
+
+2024-07-11 Robert Tari
+
+        * src/service.c: Disable scaling in virtual environments (3e12312f)
+
+2024-07-10 Mike Gabriel
+
+        * Merge branch 'tari01-pr/switch-accelerators' (8701d383)
+
+2024-07-09 Robert Tari
+
+        * src/service.c: Connect accelerators to menu actions (f1605eb4)
+
+2024-07-08 Mike Gabriel
+
+        * Merge branch 'tari01-pr/scale-tracking' (3be8058f)
+
+2024-07-07 Robert Tari
+
+        * src/service.c: Implement scale tracking (fa736710)
+
+2024-07-03 Mike Gabriel
+
+        * Merge branch 'tari01-pr/inverse-high-contrast' (d82abc79)
+
+2024-07-03 Robert Tari
+
+        * Allow using inverse high contrast mode (bc3f342b)
+
+2024-07-01 Mike Gabriel
+
+        * Merge branch 'tari01-pr/high-contrast-background' (14b5c7a5)
+
+2024-06-23 manba
+
+        * Translated using Weblate (Chinese (Simplified)) (0da6b36d)
+        * Translated using Weblate (Chinese (Simplified)) (f34cfd21)
+
+2024-06-21 Robert Tari
+
+        * Disable background image when high contrast is enabled (73d2ffaa)
+
+2024-06-01 bittin1ddc447d824349b2
+
+        * Translated using Weblate (Swedish) (2a84fb33)
+
+2024-05-31 hugoalh
+
+        * Translated using Weblate (Chinese (Traditional)) (926339fb)
+
+2024-05-05 phlostically
+
+        * Translated using Weblate (Esperanto) (60e14816)
+
+2024-05-03 tabby
+
+        * Translated using Weblate (Korean) (74fe4b8e)
+
+2024-04-28 Jozef Mlich
+
+        * Translated using Weblate (Czech) (086608fe)
+
+2024-04-27 Wellington Terumi Uemura
+
+        * Translated using Weblate (Portuguese (Brazil)) (51e1303f)
+
+2024-04-24 Heimen Stoffels
+
+        * Translated using Weblate (Dutch) (24e1bf56)
+
 2024-04-25 Mike Gabriel
 
-        * release 24.4.1 (HEAD -> main, tag: 24.4.1)
+        * release 24.4.1 (2dc5f6bd) (tag: 24.4.1)
         * Merge branch 'tari01-pr/fix-translation' (60e76404)
 
 2024-04-23 Oğuz Ersen

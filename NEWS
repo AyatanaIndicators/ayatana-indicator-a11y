@@ -1,3 +1,20 @@
+Overview of changes in ayatana-indicator-a11y 24.4.2
+
+  - Disable background image when high contrast is enabled
+  - Allow using inverse high contrast mode
+  - src/service.c: Implement scale tracking
+  - src/service.c: Connect accelerators to menu actions
+  - src/service.c: Disable scaling in virtual environments
+  - src/service.c: If possible, replace errors with more descriptive
+    warnings when facing a panic
+  - src/service.c: Disable scaling for Wayland
+  - src/service.c: Close the menu when the scaling changes
+  - src/service.c: Do not save high contrast themes as last used theme
+    sends the MagnifierClosed signal, so this code is now orphaned.
+    undecorated the magnifier window, Arctica Greeter no longer
+  - src/service.c: Drop MagnifierClosed signal handler: Since we have
+  - Translation updates.
+
 Overview of changes in ayatana-indicator-a11y 24.4.1
 
   - Translation fix. (UI was always in English).
