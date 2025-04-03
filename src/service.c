@@ -1,5 +1,5 @@
 /*
- * Copyright 2023-2024 Robert Tari <robert@tari.in>
+ * Copyright 2023-2025 Robert Tari <robert@tari.in>
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -1011,30 +1011,62 @@ static void setAccelerator (GMenuItem *pItem, gchar *sKey, IndicatorA11yService 
     {
         if (!self->pPrivate->bGreeter)
         {
-            gchar *sAccelerator = NULL;
-            gboolean bMate = ayatana_common_utils_is_mate ();
+            gboolean bContrast = g_str_equal (sKey, "contrast");
 
-            if (bMate)
+            if (!bContrast)
             {
-                sAccelerator = g_settings_get_string (self->pPrivate->pKeybindingSettings, sKey);
+                gchar *sAccelerator = NULL;
+                gboolean bMate = ayatana_common_utils_is_mate ();
 
-                if (sAccelerator)
+                if (bMate)
                 {
-                    g_menu_item_set_attribute (pItem, "accel", "s", sAccelerator);
-                    g_free (sAccelerator);
+                    sAccelerator = g_settings_get_string (self->pPrivate->pKeybindingSettings, sKey);
+
+                    if (sAccelerator)
+                    {
+                        g_menu_item_set_attribute (pItem, "accel", "s", sAccelerator);
+                        g_free (sAccelerator);
+                    }
                 }
-            }
-            else
-            {
-                gchar **lAccelerators = g_settings_get_strv (self->pPrivate->pKeybindingSettings, sKey);
-
-                if (lAccelerators)
+                else
                 {
-                    g_menu_item_set_attribute (pItem, "accel", "s", lAccelerators[0]);
-                    g_strfreev (lAccelerators);
+                    gchar **lAccelerators = g_settings_get_strv (self->pPrivate->pKeybindingSettings, sKey);
+
+                    if (lAccelerators)
+                    {
+                        g_menu_item_set_attribute (pItem, "accel", "s", lAccelerators[0]);
+                        g_strfreev (lAccelerators);
+                    }
                 }
             }
         }
+    }
+    else
+    {
+        gboolean bKeyboard = g_str_equal (sKey, "on-screen-keyboard");
+        gboolean bReader = g_str_equal (sKey, "screenreader");
+        gboolean bMagnifier = g_str_equal (sKey, "magnifier");
+        gboolean bContrast = g_str_equal (sKey, "contrast");
+        gchar *sAccelerator = NULL;
+
+        if (bKeyboard)
+        {
+            sAccelerator = "<Control>K";
+        }
+        else if (bReader)
+        {
+            sAccelerator = "<Control>S";
+        }
+        else if (bContrast)
+        {
+            sAccelerator = "<Control>H";
+        }
+        else if (bMagnifier)
+        {
+            sAccelerator = "<Control>M";
+        }
+
+        g_menu_item_set_attribute (pItem, "accel", "s", sAccelerator);
     }
 }
 
@@ -1486,6 +1518,7 @@ static void indicator_a11y_service_init (IndicatorA11yService *self)
 
     pItem = g_menu_item_new (_("High Contrast"), "indicator.contrast");
     g_menu_item_set_attribute (pItem, "x-ayatana-type", "s", "org.ayatana.indicator.switch");
+    setAccelerator (pItem, "contrast", self);
     g_menu_append_item (pSection, pItem);
     g_object_unref (pItem);
 
