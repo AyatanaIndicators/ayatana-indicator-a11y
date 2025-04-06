@@ -8,17 +8,20 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2023-04-10 23:13+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-04-06 17:18+0000\n"
+"Last-Translator: Sivakumar <sivakumj@googlemail.com>\n"
+"Language-Team: Tamil (Sri Lanka) <https://hosted.weblate.org/projects/"
+"ayatana-indicators/a11y-applet/ta_LK/>\n"
 "Language: ta_LK\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #: src/service.c:77
 msgid "Accessibility"
-msgstr ""
+msgstr "நெருங்குதல்"
 
 #: src/service.c:78 src/service.c:87
 msgid "Accessibility settings"
@@ -31,7 +34,7 @@ msgstr ""
 
 #: src/service.c:503
 msgid "Warning"
-msgstr ""
+msgstr "எச்சரிக்கை"
 
 #: src/service.c:1111
 msgid "User Interface Scale"
