@@ -1,3 +1,9 @@
+Overview of changes in ayatana-indicator-a11y 25.4.0
+
+  - src/service.c: Add accelerators for the greeter.
+  - Translation updates (thanks to all contributors on
+    hosted.weblate.org).
+
 Overview of changes in ayatana-indicator-a11y 24.4.2
 
   - Disable background image when high contrast is enabled

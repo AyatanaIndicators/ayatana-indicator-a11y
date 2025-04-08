@@ -1,478 +1,489 @@
+2025-04-08 Mike Gabriel
+
+        * Release 25.4.0 (HEAD -> main, tag: 25.4.0)
+        * Merge branch 'tari01-pr/greeter-accelerators' (21713c3)
+
+2025-04-06 Sivakumar
+
+        * Translated using Weblate (Tamil (Sri Lanka)) (f421373)
+        * Translated using Weblate (Tamil (Sri Lanka)) (8bc2874)
+
+2025-04-03 Robert Tari
+
+        * src/service.c: Add accelerators for the greeter (e1bece1)
+
 2025-03-12 Mike Gabriel
 
-        * release 24.4.2 (HEAD -> main, tag: 24.4.2)
-        * Merge branch 'tari01-pr/drop-magnifier-close' (060fb350)
+        * release 24.4.2 (361dc95) (tag: 24.4.2)
+        * Merge branch 'tari01-pr/drop-magnifier-close' (060fb35)
 
 2024-08-01 Robert Tari
 
         * src/service.c: Drop MagnifierClosed signal handler: Since we have
           undecorated the magnifier window, Arctica Greeter no
           longer sends the MagnifierClosed signal, so this code is
-          now orphaned. (ae8c17ee)
+          now orphaned. (ae8c17e)
 
 2025-02-17 Temuri Doghonadze
 
-        * Translated using Weblate (Georgian) (f59066df)
+        * Translated using Weblate (Georgian) (f59066d)
 
 2025-01-18 weshall
 
-        * Translated using Weblate (Hindi) (73127af0)
+        * Translated using Weblate (Hindi) (73127af)
 
 2024-12-27 dex girl
 
-        * Translated using Weblate (English (Canada)) (eb14e3c6)
+        * Translated using Weblate (English (Canada)) (eb14e3c)
 
 2024-11-13 Cleverson Cândido
 
-        * Translated using Weblate (Portuguese) (f6a7f063)
+        * Translated using Weblate (Portuguese) (f6a7f06)
 
 2024-11-11 Yaron Shahrabani
 
-        * Translated using Weblate (Hebrew) (61c3bb19)
+        * Translated using Weblate (Hebrew) (61c3bb1)
 
 2024-11-08 தமிழ்நேரம்
 
-        * Translated using Weblate (Tamil) (4ba743c9)
+        * Translated using Weblate (Tamil) (4ba743c)
 
 2024-10-29 Serhii Horichenko
 
-        * Translated using Weblate (Ukrainian) (c760ae0b)
-        * Translated using Weblate (Russian) (3a037c98)
+        * Translated using Weblate (Ukrainian) (c760ae0)
+        * Translated using Weblate (Russian) (3a037c9)
 
 2024-09-27 Remus-Gabriel Chelu
 
-        * Translated using Weblate (Romanian) (a5c12569)
+        * Translated using Weblate (Romanian) (a5c1256)
 
 2024-09-02 Moo
 
-        * Translated using Weblate (Lithuanian) (8417838d)
+        * Translated using Weblate (Lithuanian) (8417838)
 
 2024-08-22 Mike Gabriel
 
-        * Merge branch 'tari01-pr/no-high-contrast-last-theme' (bc75a16d)
+        * Merge branch 'tari01-pr/no-high-contrast-last-theme' (bc75a16)
 
 2024-08-10 Robert Tari
 
         * src/service.c: Do not save high contrast themes as last used theme
-          (ad6af1a8)
+          (ad6af1a)
 
 2024-08-22 Mike Gabriel
 
-        * Merge branch 'tari01-pr/value-change-close' (57327e84)
+        * Merge branch 'tari01-pr/value-change-close' (57327e8)
 
 2024-08-13 umesaburo sagawa
 
-        * Translated using Weblate (Japanese) (ba5ce241)
+        * Translated using Weblate (Japanese) (ba5ce24)
 
 2024-08-04 Steve
 
-        * Translated using Weblate (French) (db1db5f6)
+        * Translated using Weblate (French) (db1db5f)
 
 2024-07-16 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (42133560)
+        * Translated using Weblate (Occitan) (4213356)
 
 2024-08-13 umesaburo sagawa
 
-        * Translated using Weblate (Japanese) (e862873b)
+        * Translated using Weblate (Japanese) (e862873)
 
 2024-08-04 Steve
 
-        * Translated using Weblate (French) (e80737e3)
+        * Translated using Weblate (French) (e80737e)
 
 2024-07-16 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (675cbf9d)
+        * Translated using Weblate (Occitan) (675cbf9)
 
 2024-07-17 Robert Tari
 
-        * src/service.c: Close the menu when the scaling changes (2cef0aca)
+        * src/service.c: Close the menu when the scaling changes (2cef0ac)
 
 2024-07-16 Mike Gabriel
 
-        * Merge branch 'tari01-pr/panic-warning' (248b52e9)
+        * Merge branch 'tari01-pr/panic-warning' (248b52e)
 
 2024-07-16 Robert Tari
 
-        * src/service.c: Disable scaling for Wayland (914e1cf4)
+        * src/service.c: Disable scaling for Wayland (914e1cf)
         * src/service.c: If possible, replace errors with more descriptive
-          warnings when facing a panic (2db92c1d)
+          warnings when facing a panic (2db92c1)
 
 2024-07-15 Mike Gabriel
 
-        * Merge branch 'tari01-pr/scale-virtual-env' (15c1c637)
+        * Merge branch 'tari01-pr/scale-virtual-env' (15c1c63)
 
 2024-07-11 Robert Tari
 
-        * src/service.c: Disable scaling in virtual environments (3e12312f)
+        * src/service.c: Disable scaling in virtual environments (3e12312)
 
 2024-07-10 Mike Gabriel
 
-        * Merge branch 'tari01-pr/switch-accelerators' (8701d383)
+        * Merge branch 'tari01-pr/switch-accelerators' (8701d38)
 
 2024-07-09 Robert Tari
 
-        * src/service.c: Connect accelerators to menu actions (f1605eb4)
+        * src/service.c: Connect accelerators to menu actions (f1605eb)
 
 2024-07-08 Mike Gabriel
 
-        * Merge branch 'tari01-pr/scale-tracking' (3be8058f)
+        * Merge branch 'tari01-pr/scale-tracking' (3be8058)
 
 2024-07-07 Robert Tari
 
-        * src/service.c: Implement scale tracking (fa736710)
+        * src/service.c: Implement scale tracking (fa73671)
 
 2024-07-03 Mike Gabriel
 
-        * Merge branch 'tari01-pr/inverse-high-contrast' (d82abc79)
+        * Merge branch 'tari01-pr/inverse-high-contrast' (d82abc7)
 
 2024-07-03 Robert Tari
 
-        * Allow using inverse high contrast mode (bc3f342b)
+        * Allow using inverse high contrast mode (bc3f342)
 
 2024-07-01 Mike Gabriel
 
-        * Merge branch 'tari01-pr/high-contrast-background' (14b5c7a5)
+        * Merge branch 'tari01-pr/high-contrast-background' (14b5c7a)
 
 2024-06-23 manba
 
-        * Translated using Weblate (Chinese (Simplified)) (0da6b36d)
-        * Translated using Weblate (Chinese (Simplified)) (f34cfd21)
+        * Translated using Weblate (Chinese (Simplified)) (0da6b36)
+        * Translated using Weblate (Chinese (Simplified)) (f34cfd2)
 
 2024-06-21 Robert Tari
 
-        * Disable background image when high contrast is enabled (73d2ffaa)
+        * Disable background image when high contrast is enabled (73d2ffa)
 
 2024-06-01 bittin1ddc447d824349b2
 
-        * Translated using Weblate (Swedish) (2a84fb33)
+        * Translated using Weblate (Swedish) (2a84fb3)
 
 2024-05-31 hugoalh
 
-        * Translated using Weblate (Chinese (Traditional)) (926339fb)
+        * Translated using Weblate (Chinese (Traditional)) (926339f)
 
 2024-05-05 phlostically
 
-        * Translated using Weblate (Esperanto) (60e14816)
+        * Translated using Weblate (Esperanto) (60e1481)
 
 2024-05-03 tabby
 
-        * Translated using Weblate (Korean) (74fe4b8e)
+        * Translated using Weblate (Korean) (74fe4b8)
 
 2024-04-28 Jozef Mlich
 
-        * Translated using Weblate (Czech) (086608fe)
+        * Translated using Weblate (Czech) (086608f)
 
 2024-04-27 Wellington Terumi Uemura
 
-        * Translated using Weblate (Portuguese (Brazil)) (51e1303f)
+        * Translated using Weblate (Portuguese (Brazil)) (51e1303)
 
 2024-04-24 Heimen Stoffels
 
-        * Translated using Weblate (Dutch) (24e1bf56)
+        * Translated using Weblate (Dutch) (24e1bf5)
 
 2024-04-25 Mike Gabriel
 
-        * release 24.4.1 (2dc5f6bd) (tag: 24.4.1)
-        * Merge branch 'tari01-pr/fix-translation' (60e76404)
+        * release 24.4.1 (2dc5f6b) (tag: 24.4.1)
+        * Merge branch 'tari01-pr/fix-translation' (60e7640)
 
 2024-04-23 Oğuz Ersen
 
-        * Translated using Weblate (Turkish) (5ea17cd9)
+        * Translated using Weblate (Turkish) (5ea17cd)
 
 2024-04-24 gallegonovato
 
-        * Translated using Weblate (Spanish) (eb0b40f9)
+        * Translated using Weblate (Spanish) (eb0b40f)
 
 2024-04-23 Oğuz Ersen
 
-        * Translated using Weblate (Turkish) (010ca36a)
+        * Translated using Weblate (Turkish) (010ca36)
 
 2024-04-24 gallegonovato
 
-        * Translated using Weblate (Spanish) (0b203498)
+        * Translated using Weblate (Spanish) (0b20349)
 
 2024-04-24 Robert Tari
 
-        * Translation fix (a00943cb)
+        * Translation fix (a00943c)
 
 2024-04-23 Mike Gabriel
 
-        * Translated using Weblate (German) (0c942048)
-        * Update translation files. (ec6fb273)
+        * Translated using Weblate (German) (0c94204)
+        * Update translation files. (ec6fb27)
 
 2024-04-08 Mike Gabriel
 
-        * release 24.4.0 (a6fbf2a5) (tag: 24.4.0)
-        * Merge branch 'tari01-pr/add-screen-scaling' (3c1338b9)
+        * release 24.4.0 (a6fbf2a) (tag: 24.4.0)
+        * Merge branch 'tari01-pr/add-screen-scaling' (3c1338b)
 
 2024-04-04 Robert Tari
 
-        * .build.yml: Add new build dependencies (6469e4e8)
-        * debian/control: Add new build dependencies (333e85b3)
-        * Add screen scaling resources and code (ff9c0fea)
+        * .build.yml: Add new build dependencies (6469e4e)
+        * debian/control: Add new build dependencies (333e85b)
+        * Add screen scaling resources and code (ff9c0fe)
 
 2024-04-01 复予
 
-        * Translated using Weblate (Chinese (Simplified)) (383e7657)
+        * Translated using Weblate (Chinese (Simplified)) (383e765)
 
 2024-03-14 이정희
 
-        * Translated using Weblate (Korean) (d50ab57d)
+        * Translated using Weblate (Korean) (d50ab57)
 
 2024-03-12 Robert Tari
 
-        * Merge branch 'sunweaver-pr/hide-in-lomiri' (fb9d7c76)
+        * Merge branch 'sunweaver-pr/hide-in-lomiri' (fb9d7c7)
 
 2024-03-12 Mike Gabriel
 
         * src/service.c: Hide a11y indicator when running under Lomiri.
-          (520e092d)
+          (520e092)
 
 2024-02-24 Mike Gabriel
 
-        * Merge branch 'tari01-pr/policy-message' (06a5df90)
+        * Merge branch 'tari01-pr/policy-message' (06a5df9)
 
 2024-02-23 Robert Tari
 
         * data/org.ayatana.indicator.a11y.AccountsService.policy: Fix policy
-          message text (1146f10f)
+          message text (1146f10)
 
 2023-12-26 Mike Gabriel
 
-        * release 23.10.3 (3954056d) (tag: 23.10.3)
+        * release 23.10.3 (3954056) (tag: 23.10.3)
 
 2023-12-06 Mike Gabriel
 
-        * Merge branch 'tari01-pr/sync-magnifier-with-greeter' (1a14d6b6)
+        * Merge branch 'tari01-pr/sync-magnifier-with-greeter' (1a14d6b)
 
 2023-12-06 Robert Tari
 
         * src/service.c: Synchronise magnifier logic with changes to Arctica
-          Greeter (407c0973)
+          Greeter (407c097)
 
 2023-12-05 Mike Gabriel
 
-        * Merge branch 'tari01-pr/add-magnifier' (b16607dd)
+        * Merge branch 'tari01-pr/add-magnifier' (b16607d)
 
 2023-12-04 Mike Gabriel
 
-        * release 23.10.2 (a02d92ef)
+        * release 23.10.2 (a02d92e)
 
 2023-12-05 Robert Tari
 
-        * INSTALL.md: Update dependencies (c9cb5a74)
-        * debian/common: Add dependencies (472f607b)
-        * .build.yml: Build libayatana-common dependency (984edf8f)
-        * src/service.c: Add magnifier toggling logic (c85190de)
-        * CMakeLists.txt: Add libayatana-common dependency (dc92708d)
-        * data/*: Store screen magnifier application name and state
-          (4d7e4462)
+        * INSTALL.md: Update dependencies (c9cb5a7)
+        * debian/common: Add dependencies (472f607)
+        * .build.yml: Build libayatana-common dependency (984edf8)
+        * src/service.c: Add magnifier toggling logic (c85190d)
+        * CMakeLists.txt: Add libayatana-common dependency (dc92708)
+        * data/*: Store screen magnifier application name and state (4d7e446)
 
 2023-12-04 Mike Gabriel
 
-        * release 23.10.2 (5e590371) (tag: 23.10.2)
-        * Merge branch 'tari01-pr/two-way-accountsservice' (844374b5)
+        * release 23.10.2 (5e59037) (tag: 23.10.2)
+        * Merge branch 'tari01-pr/two-way-accountsservice' (844374b)
 
 2023-12-04 Robert Tari
 
         * src/service.c: Set AccounsService properties in both directions
-          (7a9fb4fd)
-        * Store last used Gtk and icon themes (4c6cafbf)
+          (7a9fb4f)
+        * Store last used Gtk and icon themes (4c6cafb)
         * data/org.ayatana.indicator.a11y.AccountsService.xml: Rename
-          properties to match action names (d5e6b9c0)
+          properties to match action names (d5e6b9c)
 
 2023-11-06 Mike Gabriel
 
-        * release 23.10.1 (33ecd67a) (tag: 23.10.1)
+        * release 23.10.1 (33ecd67) (tag: 23.10.1)
 
 2023-11-02 Mike Gabriel
 
-        * Merge branch 'tari01-pr/screensaver-onboard' (8687af1c)
+        * Merge branch 'tari01-pr/screensaver-onboard' (8687af1)
 
 2023-11-02 Robert Tari
 
         * src/service.c: Sync screensaver and session state of OnBoard
-          (1fc14fbf)
+          (1fc14fb)
 
 2023-10-24 Moo
 
-        * Translated using Weblate (Lithuanian) (19d5e3b0)
+        * Translated using Weblate (Lithuanian) (19d5e3b)
 
 2023-10-22 Weblate
 
-        * Added translation using Weblate (Kurdish) (370d5b9c)
+        * Added translation using Weblate (Kurdish) (370d5b9)
 
 2023-10-15 Mike Gabriel
 
         * debian/control: Typo fix in LONG_DESCRIPTION. Thanks to Ionic for
-          spotting this. (cd03e40e)
+          spotting this. (cd03e40)
 
 2023-10-12 Mike Gabriel
 
-        * d/changelog: post-release update to 23.10.0-0 (c696bf6b)
-        * release 23.10.0 (c12afc0d) (tag: 23.10.0)
-        * Merge branch 'tari01-pr/polkit-rules' (929fb471)
+        * d/changelog: post-release update to 23.10.0-0 (c696bf6)
+        * release 23.10.0 (c12afc0) (tag: 23.10.0)
+        * Merge branch 'tari01-pr/polkit-rules' (929fb47)
 
 2023-10-11 Robert Tari
 
-        * Add PolicyKit .rules file (9034372d)
+        * Add PolicyKit .rules file (9034372)
 
 2023-10-10 Mike Gabriel
 
-        * po/: Update translation files. (3b14bd4f)
-        * Merge branch 'tari01-pr/add-accountsservice' (2a2957b5)
+        * po/: Update translation files. (3b14bd4)
+        * Merge branch 'tari01-pr/add-accountsservice' (2a2957b)
 
 2023-10-10 Robert Tari
 
-        * src/service.c: Rename greeter D-Bus name and path (4c296c7e)
+        * src/service.c: Rename greeter D-Bus name and path (4c296c7)
 
 2023-10-06 Robert Tari
 
-        * debian/control: Add libaccountsservice-dev dependency (c04e2e9c)
-        * .build.yml: Add libaccountsservice-dev dependency (414532c4)
+        * debian/control: Add libaccountsservice-dev dependency (c04e2e9)
+        * .build.yml: Add libaccountsservice-dev dependency (414532c)
 
 2023-10-07 Robert Tari
 
-        * src/service.c: Simplify GSettings code (c0aee6d4)
+        * src/service.c: Simplify GSettings code (c0aee6d)
 
 2023-10-06 Robert Tari
 
-        * Synchronise greeter states to session (43cbc2bc)
-        * Add AccountsService data files (0d551e29)
+        * Synchronise greeter states to session (43cbc2b)
+        * Add AccountsService data files (0d551e2)
         * src/service.c: Bind Orca settings only when not in Greeter
-          (3ff2798e)
+          (3ff2798)
 
 2023-10-02 Robert Tari
 
         * Merge branch 'sunweaver-pr/greeter-initialize-toggle-switches'
-          (b73b0379)
-        * src/service.c: Fix multiple GSettingsSchema unreferencing
-          (3078fae3)
+          (b73b037)
+        * src/service.c: Fix multiple GSettingsSchema unreferencing (3078fae)
 
 2023-09-21 Mike Gabriel
 
         * greeter: Initialize screen reader and OSK correctly when run in
-          greeter mode. (03c71160)
+          greeter mode. (03c7116)
 
 2023-09-16 Mike Gabriel
 
-        * release 23.9.0 (eec852af) (tag: 23.9.0)
-        * Merge branch 'tari01-pr/hicontrast-dbus' (c232082e)
+        * release 23.9.0 (eec852a) (tag: 23.9.0)
+        * Merge branch 'tari01-pr/hicontrast-dbus' (c232082)
 
 2023-09-16 Robert Tari
 
-        * src/service.c: Toggle greeter high contrast via D-Bus (a7ae5315)
+        * src/service.c: Toggle greeter high contrast via D-Bus (a7ae531)
 
 2023-09-15 Robert Tari
 
-        * Merge branch 'sunweaver-pr/greeter-pos-of-a11y-indicator'
-          (d600a5ce)
+        * Merge branch 'sunweaver-pr/greeter-pos-of-a11y-indicator' (d600a5c)
 
 2023-09-15 Mike Gabriel
 
         * data/org.ayatana.indicator.a11y: In Arctica Greeter the a11y
           indicator shall be placed on the very left, i.e. left of
-          appindicator items (mainly nm-applet). (2d39c922)
-        * release 0.0.2 (cc96ce5b) (tag: 0.0.2)
-        * Merge branch 'tari01-pr/icon-and-position-fix' (240eb7c7)
+          appindicator items (mainly nm-applet). (2d39c92)
+        * release 0.0.2 (cc96ce5) (tag: 0.0.2)
+        * Merge branch 'tari01-pr/icon-and-position-fix' (240eb7c)
 
 2023-09-15 Robert Tari
 
         * data/org.ayatana.indicator.a11y: Send indicator to the opposite end
-          (9faf7680)
+          (9faf768)
 
 2023-09-11 Mike Gabriel
 
-        * release 0.0.1 (25002d92) (tag: 0.0.1)
+        * release 0.0.1 (25002d9) (tag: 0.0.1)
 
 2023-08-07 Mike Gabriel
 
-        * Merge branch 'tari01-pr/arctica-d-bus' (76271179)
+        * Merge branch 'tari01-pr/arctica-d-bus' (7627117)
 
 2023-07-04 Robert Tari
 
         * src/service.c: Rewrite/add OnBoard/Orca D-Bus code for Arctica
-          (8814b3d8)
+          (8814b3d)
 
 2023-07-30 Eryk Michalak
 
-        * Translated using Weblate (Polish) (f872ba22)
+        * Translated using Weblate (Polish) (f872ba2)
 
 2023-07-01 Luna Jernberg
 
-        * Translated using Weblate (Swedish) (02eb9f48)
+        * Translated using Weblate (Swedish) (02eb9f4)
 
 2023-07-01 spnux
 
-        * Translated using Weblate (French) (2063fbcf)
+        * Translated using Weblate (French) (2063fbc)
 
 2023-06-27 Sylke Vicious
 
-        * Translated using Weblate (Italian) (38c37284)
+        * Translated using Weblate (Italian) (38c3728)
 
 2023-06-25 ssantos
 
-        * Translated using Weblate (Portuguese) (c8d6f646)
+        * Translated using Weblate (Portuguese) (c8d6f64)
 
 2023-06-22 Milan Korecky
 
-        * Translated using Weblate (Czech) (46a5e1e4)
+        * Translated using Weblate (Czech) (46a5e1e)
 
 2023-06-22 Joan CiberSheep
 
-        * Translated using Weblate (Catalan) (ddc6cc75)
+        * Translated using Weblate (Catalan) (ddc6cc7)
 
 2023-06-22 Jozef Mlich
 
-        * Translated using Weblate (Czech) (873ff83b)
+        * Translated using Weblate (Czech) (873ff83)
 
 2023-06-14 Sergii Horichenko
 
-        * Translated using Weblate (Ukrainian) (a0a7e56e)
-        * Translated using Weblate (Russian) (4c856720)
+        * Translated using Weblate (Ukrainian) (a0a7e56)
+        * Translated using Weblate (Russian) (4c85672)
 
 2023-05-20 Milo Ivir
 
-        * Translated using Weblate (Croatian) (83ae5c2f)
+        * Translated using Weblate (Croatian) (83ae5c2)
 
 2023-05-11 Oğuz Ersen
 
-        * Translated using Weblate (Turkish) (89e04281)
+        * Translated using Weblate (Turkish) (89e0428)
 
 2023-05-10 gallegonovato
 
-        * Translated using Weblate (Spanish) (aa32a919)
+        * Translated using Weblate (Spanish) (aa32a91)
 
 2023-05-08 Wellington Terumi Uemura
 
-        * Translated using Weblate (Portuguese (Brazil)) (0962b987)
+        * Translated using Weblate (Portuguese (Brazil)) (0962b98)
 
 2023-05-09 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (15d59bff)
+        * Translated using Weblate (Occitan) (15d59bf)
 
 2023-05-09 Yaron Shahrabani
 
-        * Translated using Weblate (Hebrew) (d14970a4)
+        * Translated using Weblate (Hebrew) (d14970a)
 
 2023-05-08 Heimen Stoffels
 
-        * Translated using Weblate (Dutch) (c1254591)
+        * Translated using Weblate (Dutch) (c125459)
 
 2023-05-08 Mike Gabriel
 
-        * Translated using Weblate (German) (24c75d17)
-        * po/: Drop ku translatio file. (0c1b09b8)
+        * Translated using Weblate (German) (24c75d1)
+        * po/: Drop ku translatio file. (0c1b09b)
 
 2023-04-27 Mike Gabriel
 
-        * Merge branch 'tari01-pr/initial-commit' (e1a64279)
+        * Merge branch 'tari01-pr/initial-commit' (e1a6427)
 
 2023-04-10 Robert Tari
 
-        * Initial commit (9701ddcc)
+        * Initial commit (9701ddc)
 
 2023-04-06 Robert Tari
 
-        * Initial commit (4264e2d9)
+        * Initial commit (4264e2d)
