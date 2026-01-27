@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2025-11-15 03:51+0000\n"
+"PO-Revision-Date: 2026-01-28 00:34+0000\n"
 "Last-Translator: BoneNI <bounkirdni@gmail.com>\n"
 "Language-Team: Lao <https://hosted.weblate.org/projects/ayatana-indicators/"
 "a11y-applet/lo/>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: src/service.c:77
 msgid "Accessibility"
-msgstr ""
+msgstr "ການຊ່ວຍເຂົ້າເຖິງ"
 
 #: src/service.c:78 src/service.c:87
 msgid "Accessibility settings"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າການຊ່ວຍເຂົ້າເຖິງ"
 
 #: src/service.c:502
 #, c-format
 msgid "The %s program is required for this action, but it was not found."
-msgstr ""
+msgstr "ຕ້ອງການໂປຣແກຣມ %s ສຳລັບການດຳເນີນການນີ້, ແຕ່ບໍ່ພົບ."
 
 #: src/service.c:503
 msgid "Warning"
@@ -38,20 +38,20 @@ msgstr "ຄຳເຕືອນ"
 
 #: src/service.c:1111
 msgid "User Interface Scale"
-msgstr ""
+msgstr "ຂະໜາດສ່ວນຕິດຕໍ່ຜູ້ໃຊ້"
 
 #: src/service.c:1128
 msgid "High Contrast"
-msgstr ""
+msgstr "ຄວາມຄົມຊັດສູງ"
 
 #: src/service.c:1133
 msgid "On-Screen Keyboard"
-msgstr ""
+msgstr "ແປ້ນພິມເທິງໜ້າຈໍ"
 
 #: src/service.c:1138
 msgid "Screen Reader"
-msgstr ""
+msgstr "ເຄື່ອງອ່ານໜ້າຈໍ"
 
 #: src/service.c:1143
 msgid "Screen Magnifier"
-msgstr ""
+msgstr "ແວ່ນຂະຫຍາຍໜ້າຈໍ"
