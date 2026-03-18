@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2023-04-10 23:13+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-03-19 11:09+0000\n"
+"Last-Translator: Andi Chandler <andi@gowling.com>\n"
+"Language-Team: English (United Kingdom) <https://hosted.weblate.org/projects/"
+"ayatana-indicators/a11y-applet/en_GB/>\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/service.c:77
 msgid "Accessibility"
@@ -28,15 +30,15 @@ msgstr "Accessibility settings"
 #: src/service.c:502
 #, c-format
 msgid "The %s program is required for this action, but it was not found."
-msgstr ""
+msgstr "The %s program is required for this action, but it was not found."
 
 #: src/service.c:503
 msgid "Warning"
-msgstr ""
+msgstr "Warning"
 
 #: src/service.c:1111
 msgid "User Interface Scale"
-msgstr ""
+msgstr "User Interface Scale"
 
 #: src/service.c:1128
 msgid "High Contrast"
@@ -51,6 +53,5 @@ msgid "Screen Reader"
 msgstr "Screen Reader"
 
 #: src/service.c:1143
-#, fuzzy
 msgid "Screen Magnifier"
-msgstr "Screen Reader"
+msgstr "Screen Magnifier"
