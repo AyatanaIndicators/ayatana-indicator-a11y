@@ -1,6 +1,55 @@
+2026-06-11 Mike Gabriel
+
+        * Release 25.4.1 (HEAD -> main, tag: 25.4.1)
+
+2026-05-19 Arif Budiman
+
+        * Translated using Weblate (Indonesian) (4de9036)
+
+2026-03-18 Andi Chandler
+
+        * Translated using Weblate (English (United Kingdom)) (c9ca76d)
+
+2026-02-16 Arif Budiman
+
+        * Translated using Weblate (Indonesian) (3a8c28f)
+
+2026-01-27 BoneNI
+
+        * Translated using Weblate (Lao) (9533220)
+
+2025-11-14 BoneNI
+
+        * Translated using Weblate (Lao) (677f047)
+
+2025-09-14 Milo Ivir
+
+        * Translated using Weblate (Croatian) (651a38e)
+
+2025-08-24 Ida Brenna
+
+        * Translated using Weblate (Norwegian Bokmål) (a5e6e42)
+
+2025-07-18 Ricky Tigg
+
+        * Translated using Weblate (Finnish) (515565c)
+
+2025-07-12 Alioc
+
+        * Translated using Weblate (Chinese (Simplified Han script))
+          (5dc3f4a)
+
+2025-05-07 Priit Jõerüüt
+
+        * Translated using Weblate (Estonian) (66d8ef1)
+
+2025-04-23 GiannosOB
+
+        * Translated using Weblate (Greek) (38f167f)
+
 2025-04-08 Mike Gabriel
 
-        * Release 25.4.0 (HEAD -> main, tag: 25.4.0)
+        * Release 25.4.0 (a9e8aa3) (tag: 25.4.0)
         * Merge branch 'tari01-pr/greeter-accelerators' (21713c3)
 
 2025-04-06 Sivakumar
