@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2023-06-28 10:47+0000\n"
-"Last-Translator: Sylke Vicious <silkevicious@tuta.io>\n"
+"PO-Revision-Date: 2026-06-13 18:03+0000\n"
+"Last-Translator: Lorenzo Torracchi <lorenzotorracchi@mail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/ayatana-"
 "indicators/a11y-applet/it/>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 2026.7.dev0\n"
 
 #: src/service.c:77
 msgid "Accessibility"
@@ -30,15 +30,15 @@ msgstr "Impostazioni di accessibilità"
 #: src/service.c:502
 #, c-format
 msgid "The %s program is required for this action, but it was not found."
-msgstr ""
+msgstr "il programma %s richiesto per questa azione non è stato trovato."
 
 #: src/service.c:503
 msgid "Warning"
-msgstr ""
+msgstr "Attenzione"
 
 #: src/service.c:1111
 msgid "User Interface Scale"
-msgstr ""
+msgstr "Scala interfaccia utente"
 
 #: src/service.c:1128
 msgid "High Contrast"
