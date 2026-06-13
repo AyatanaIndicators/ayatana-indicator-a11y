@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2026-06-13 18:03+0000\n"
-"Last-Translator: Lorenzo Torracchi <lorenzotorracchi@mail.com>\n"
+"PO-Revision-Date: 2026-06-14 21:03+0000\n"
+"Last-Translator: Matteo <mattbel10@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/ayatana-"
 "indicators/a11y-applet/it/>\n"
 "Language: it\n"
@@ -53,6 +53,5 @@ msgid "Screen Reader"
 msgstr "Lettore di schermo"
 
 #: src/service.c:1143
-#, fuzzy
 msgid "Screen Magnifier"
-msgstr "Lettore di schermo"
+msgstr "Ingrandimento schermo"
