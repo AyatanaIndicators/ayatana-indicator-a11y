@@ -1,36 +1,43 @@
 Source: ayatana-indicator-a11y
+Standards-Version: 4.7.4
+Maintainer: Ayatana Packagers <pkg-ayatana-devel@lists.alioth.debian.org>
+Uploaders:
+ Mike Gabriel <sunweaver@debian.org>,
+ Debian UBports Team <team+ubports@tracker.debian.org>,
 Section: misc
-Priority: optional
-Maintainer: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
-Build-Depends: cmake,
-               cmake-extras (>= 0.10),
-               libglib2.0-dev (>= 2.36),
-               libaccountsservice-dev,
-               libayatana-common-dev (>= 0.9.9),
-               libx11-dev,
-               libxrandr-dev,
-# for packaging
-               debhelper (>= 10),
-               dh-systemd | hello,
-               dpkg-dev (>= 1.16.1.1),
-               intltool,
-# for systemd unit
-               systemd [linux-any],
-Standards-Version: 4.5.1
-Homepage: https://github.com/AyatanaIndicators/ayatana-indicator-a11y
-Vcs-Git: https://github.com/AyatanaIndicators/ayatana-indicator-a11y
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ cmake-extras,
+ intltool,
+ libaccountsservice-dev,
+ libayatana-common-dev,
+ libglib2.0-dev,
+ libx11-dev,
+ libxrandr-dev,
+ systemd-dev [linux-any],
 Vcs-Browser: https://github.com/AyatanaIndicators/ayatana-indicator-a11y
+Vcs-Git: https://github.com/AyatanaIndicators/ayatana-indicator-a11y.git
+Homepage: https://github.com/AyatanaIndicators/ayatana-indicator-a11y
 
 Package: ayatana-indicator-a11y
 Architecture: any
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         onboard,
-         orca,
-         espeak-ng,
-         ayatana-indicator-common,
+Depends:
+ ayatana-indicator-common,
+ espeak-ng,
+ onboard,
+ orca,
+ ${misc:Depends},
+ ${shlibs:Depends},
 Description: Ayatana Indicator for Accessibility Settings
- This package contains the accessibility indicator, which should show
- as an icon in the top panel of indicator aware desktop environments.
+ This Ayatana Indicator provides quick access to accessibility related
+ assistance applications such as the screen reader or an on-screen
+ keyboard.
  .
- It can be used to toggle and access various accessibility features.
+ The provided accessibility indicator should show as an icon in the top
+ panel of indicator aware desktop environments. It can be used to toggle
+ and access various accessibility features.
+ .
+ Ayatana Indicators are only available on desktop environments that
+ provide a renderer for system indicators (such as MATE, Xfce, Lomiri,
+ etc.).
