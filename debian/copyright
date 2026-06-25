@@ -1,21 +1,67 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: ayatana-indicator-a11y
-Upstream-Contact: Robert Tari <robert@tari.in>
+Upstream-Contact: Ayatana Indicator Accessibility
 Source: https://github.com/AyatanaIndicators/ayatana-indicator-a11y
 
-Files: *
+Files: src/main.c
+ src/service.c
+ src/service.h
 Copyright: 2023, Robert Tari <robert@tari.in>
-License: GPL-3+
+  2023-2024, Robert Tari <robert@tari.in>
+License: GPL-3
+
+Files: update-po.sh
+ update-pot.sh
+Copyright: 2017, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+License: GPL-3
+
+Files: po/*.po
+Copyright: 2023-2024, Robert Tari <robert@tari.in>
+License: GPL-3
+Comment:
+ Files state: '2023, THE ayatana-indicator-a'S COPYRIGHT HOLDER'
+ .
+ So, assuming Robert Tari as copyright holder.
+
+Files: .build.yml
+ .travis.yml
+ AUTHORS
+ CMakeLists.txt
+ ChangeLog
+ INSTALL.md
+ NEWS
+ README.md
+ data/50-org.ayatana.indicator.a11y.AccountsService.pkla
+ data/50-org.ayatana.indicator.a11y.AccountsService.rules
+ data/CMakeLists.txt
+ data/ayatana-indicator-a11y.desktop.in
+ data/ayatana-indicator-a11y.service.in
+ data/icons/ayatana-indicator-a11y-scale-down.svg
+ data/icons/ayatana-indicator-a11y-scale-up.svg
+ data/org.ayatana.indicator.a11y
+ data/org.ayatana.indicator.a11y.AccountsService.policy
+ data/org.ayatana.indicator.a11y.AccountsService.xml
+ data/org.ayatana.indicator.a11y.gschema.xml
+ po/CMakeLists.txt
+ po/LINGUAS
+ po/POTFILES.in
+ po/POTFILES.skip
+ po/ayatana-indicator-a11y.pot
+ src/CMakeLists.txt
+Copyright: 2023-2024, Robert Tari <robert@tari.in>
+License: GPL-3
+Comment:
+ Assuming license and copyright holder ship from other code files.
 
 Files: debian/*
-Copyright: 2023 Robert Tari <robert@tari.in>
-License: GPL-3+
+Copyright: 2022-2023, Robert Tari <robert@tari.in>
+           2024, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+License: GPL-3
 
-License: GPL-3+
- This program is free software: you can redistribute it and/or modify
+License: GPL-3
+ This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
+ the Free Software Foundation; version 3 of the License.
  .
  This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,7 +69,7 @@ License: GPL-3+
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>.
+ along with this program. If not, see <http://www.gnu.org/licenses/>
  .
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
