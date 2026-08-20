@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2026-08-14 09:51+0000\n"
+"PO-Revision-Date: 2026-08-21 11:52+0000\n"
 "Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ayatana-indicators/"
 "a11y-applet/ta/>\n"
@@ -25,7 +25,7 @@ msgstr "அணுகுதிறன்"
 
 #: src/service.c:78 src/service.c:87
 msgid "Accessibility settings"
-msgstr "அணுகுதிறன் அமைப்பு"
+msgstr "அணுகுதிறன் அமைப்புகள்"
 
 #: src/service.c:502
 #, c-format
