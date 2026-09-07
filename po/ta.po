@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2026-08-21 11:52+0000\n"
+"PO-Revision-Date: 2026-09-08 08:51+0000\n"
 "Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ayatana-indicators/"
 "a11y-applet/ta/>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.9.1\n"
 
 #: src/service.c:77
 msgid "Accessibility"
-msgstr "அணுகுதிறன்"
+msgstr "அணுகல் எளிமை"
 
 #: src/service.c:78 src/service.c:87
 msgid "Accessibility settings"
-msgstr "அணுகுதிறன் அமைப்புகள்"
+msgstr "அணுகல் எளிமை அமைப்புகள்"
 
 #: src/service.c:502
 #, c-format
@@ -46,7 +46,7 @@ msgstr "உயர் வேறுபாடு"
 
 #: src/service.c:1133
 msgid "On-Screen Keyboard"
-msgstr "திரைமேல் விசைப்பலகை"
+msgstr "திரை விசைப்பலகை"
 
 #: src/service.c:1138
 msgid "Screen Reader"
