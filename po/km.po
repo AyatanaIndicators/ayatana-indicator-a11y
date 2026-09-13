@@ -8,47 +8,50 @@ msgstr ""
 "Project-Id-Version: ayatana-indicator-a 11y\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-23 13:37+0200\n"
-"PO-Revision-Date: 2023-04-10 23:13+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-09-14 09:51+0000\n"
+"Last-Translator: SeyhaLite <sok123230@gmail.com>\n"
+"Language-Team: Khmer (Central) <https://hosted.weblate.org/projects/ayatana-"
+"indicators/a11y-applet/km/>\n"
 "Language: km\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/service.c:77
 msgid "Accessibility"
-msgstr ""
+msgstr "ភាពងាយស្រួលប្រើ"
 
 #: src/service.c:78 src/service.c:87
 msgid "Accessibility settings"
-msgstr ""
+msgstr "ការកំណត់ភាពងាយស្រួលប្រើ"
 
 #: src/service.c:502
 #, c-format
 msgid "The %s program is required for this action, but it was not found."
-msgstr ""
+msgstr "ដើម្បីធ្វើសកម្មភាពនេះ ត្រូវការកម្មវិធី %s ប៉ុន្តែរកមិនឃើញទេ។"
 
 #: src/service.c:503
 msgid "Warning"
-msgstr ""
+msgstr "ការព្រមាន"
 
 #: src/service.c:1111
 msgid "User Interface Scale"
-msgstr ""
+msgstr "មាត្រដ្ឋានចំណុចប្រទាក់អ្នកប្រើ"
 
 #: src/service.c:1128
 msgid "High Contrast"
-msgstr ""
+msgstr "កម្រិតពណ៌ខ្ពស់"
 
 #: src/service.c:1133
 msgid "On-Screen Keyboard"
-msgstr ""
+msgstr "ក្តារចុចលើអេក្រង់"
 
 #: src/service.c:1138
 msgid "Screen Reader"
-msgstr ""
+msgstr "កម្មវិធីអានអេក្រង់"
 
 #: src/service.c:1143
 msgid "Screen Magnifier"
-msgstr ""
+msgstr "កម្មវិធីពង្រីកអេក្រង់"
