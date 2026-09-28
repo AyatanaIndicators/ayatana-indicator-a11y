@@ -31,10 +31,6 @@ install (CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink ../../
 
 install (FILES org.ayatana.indicator.a11y.AccountsService.policy DESTINATION "${CMAKE_INSTALL_FULL_DATADIR}/polkit-1/actions")
 
-# 50-org.ayatana.indicator.a11y.AccountsService.pkla
-
-install (FILES 50-org.ayatana.indicator.a11y.AccountsService.pkla DESTINATION "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/polkit-1/localauthority/10-vendor.d")
-
 # 50-org.ayatana.indicator.a11y.AccountsService.rules
 
 install (FILES 50-org.ayatana.indicator.a11y.AccountsService.rules DESTINATION "${CMAKE_INSTALL_FULL_DATADIR}/polkit-1/rules.d")
